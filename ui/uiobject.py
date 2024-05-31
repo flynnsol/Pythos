@@ -79,7 +79,8 @@ class UIType(Enum):
 
     TEXT = 0
     BUTTON = 1
-    INPUT = 2
-    SLIDER = 3
+    TOGGLE_BUTTON = 2
+    INPUT = 3
+    SLIDER = 4
 
 
