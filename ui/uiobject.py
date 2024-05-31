@@ -82,5 +82,3 @@ class UIType(Enum):
     TOGGLE_BUTTON = 2
     INPUT = 3
     SLIDER = 4
-
-

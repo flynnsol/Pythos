@@ -10,6 +10,8 @@ class UIColorChange(UIComponent):
         self.green_difference = 0
         self.blue_difference = 0
 
+        self.animation = UIAnimationType.COLOR_CHANGE
+
         self.findColorDifference()
         self.red_additive = 0
         self.green_additive = 0
@@ -103,10 +105,28 @@ class UIColorChange(UIComponent):
                     self.uiobject.secondary_color = new_colorRGB
 
     def changeBorderColorBoolean(self, boolean):
-        if boolean:
-            self.uiobject.border_color = self.color
+        if not self.is_animation:
+            if boolean:
+                self.uiobject.border_color = self.color
+            else:
+                self.uiobject.border_color = self.original_border_color
         else:
-            self.uiobject.border_color = self.original_border_color
+            if boolean:
+                if abs(self.uiobject.border_color[0] - self.color[0]) >= abs(self.red_additive) or abs(self.uiobject.border_color[1] - self.color[1]) >= abs(self.green_additive) or abs(self.uiobject.border_color[2] - self.color[2]) >= abs(self.blue_additive):
+                    new_color = self.uiobject.border_color
+                    new_colorRGB = self.changeColorTime(new_color, True)
+                    if not self.constant_flip:
+                        if self.color == new_colorRGB:
+                            self.constant_flip = True
+                    self.uiobject.border_color = new_colorRGB
+            else:
+                if abs(self.uiobject.border_color[0] - self.original_border_color[0]) >= 2 or abs(self.uiobject.border_color[1] - self.original_border_color[1]) >= 2 or abs(self.uiobject.border_color[2] - self.original_border_color[2]) >= 2:
+                    new_color = self.uiobject.border_color
+                    new_colorRGB = self.changeColorTime(new_color, False)
+                    if self.constant_flip:
+                        if self.original_border_color == new_colorRGB:
+                            self.constant_flip = False
+                    self.uiobject.border_color = new_colorRGB
 
     def changeColorTime(self, color, positive):
         if positive:
