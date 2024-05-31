@@ -22,6 +22,7 @@ class UIComponent:
         # 1 = Main, 2 = Secondary, 3 = Border
         self.color_to_change = 1
 
+        # Set Up Color Change
         self.original_main_color = self.uiobject.main_color
         self.original_secondary_color = self.uiobject.secondary_color
         self.original_border_color = self.uiobject.border_color
@@ -29,6 +30,14 @@ class UIComponent:
         self.current_main_color = self.uiobject.main_color
         self.current_secondary_color = self.uiobject.secondary_color
         self.current_border_color = self.uiobject.border_color
+
+        # Set Up Pos Change
+        self.original_pos = self.uiobject.pos
+
+        # Set Up Size Change
+        self.original_width = self.uiobject.width
+        self.original_height = self.uiobject.height
+        self.original_size = self.uiobject.size
 
         # Set Up Options
         self.color = None
