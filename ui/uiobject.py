@@ -16,6 +16,7 @@ class UIObject:
         self.height = text_rect[3]
         self.size = (self.width, self.height)
         self.rect = (self.pos[0], self.pos[1], self.size[0], self.size[1])
+        self.centered_text = False
 
         self.main_color = Colors.WHITE()
         self.secondary_color = None
@@ -40,7 +41,15 @@ class UIObject:
             surf.fill(self.secondary_color, self.rect)
         if not self.string == '':
             # TODO: Render Characters Individually to Add More Color/Animation Options
-            self.font.render_to(surf, ((self.pos[0] - offset[0]), self.pos[1] - offset[0]), self.string, self.main_color, self.secondary_color)
+            text_rect, text = self.font.render(self.string, self.main_color)
+            x_dif = 0
+            y_dif = 0
+            if self.centered_text:
+                text_rect_size = self.font.get_rect(self.string)
+                x_dif = text_rect_size[2] - self.width
+                y_dif = text_rect_size[3] - self.height
+            surf.blit(text_rect, ((self.rect[0] - offset[0]) - (x_dif / 2), (self.rect[1] - offset[1]) - (y_dif / 2), self.rect[2], self.rect[3]))
+            # self.font.render_to(surf, ((self.pos[0] - offset[0]), self.pos[1] - offset[0]), self.string, self.main_color)
 
     def tick(self, dt, target_fps):
         if self.check_mouse_pos():

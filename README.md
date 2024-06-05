@@ -22,7 +22,7 @@ Python game library/engine sitting on top of Pygame.
 
 ##### **What Is Done?**
 
-- [x] UI Library
+- [ ] UI Library
 - [ ] Entities
 - [ ] Animation
 - [x] Event Handling

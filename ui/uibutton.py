@@ -6,7 +6,8 @@ class UIButton(UIObject):
         super().__init__(pos, UIType.BUTTON, string=string, font=font)
         self.width = width
         self.height = height
-        self.size = (self.width, self.height)
+        self.centered_text = True
+        self.updateSize()
 
     def tick(self, dt, target_fps):
         super().tick(dt, target_fps)

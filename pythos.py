@@ -97,10 +97,6 @@ class Pythos:
         for menu in self.menus:
             menu.render(surf, offset)
 
-        # Test Text
-        # self.font.render_to(surf, (10, 50), 'FPS:' + str(round(self.clock.get_fps(), 1)), Colors.WHITE())
-        # self.font.render_to(surf, (40 - offset[0], 250 - offset[1]), 'Hello World!', (255, 255, 255))
-
     def eventHandler(self, event):
         for menu in self.menus:
             menu.eventHandler(event)
