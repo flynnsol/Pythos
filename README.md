@@ -16,12 +16,13 @@ Python game library/engine sitting on top of Pygame.
 - Level Editor
 - 2D Side Scrolling Physics
 - 2.5D or 2D Top Down Physics
+- Sound and Music
 - Networking? (TBD)
 
 
 ##### **What Is Done?**
 
-- [ ] UI Library
+- [x] UI Library
 - [ ] Entities
 - [ ] Animation
 - [x] Event Handling
@@ -33,4 +34,5 @@ Python game library/engine sitting on top of Pygame.
 - [ ] Level Editor
 - [ ] 2D Side Scrolling Physics
 - [ ] 2.5D/2D Top Down Physics
+- [ ] Sound and Music
 - [ ] Networking? (TBD)
