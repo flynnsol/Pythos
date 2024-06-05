@@ -8,6 +8,8 @@ class UIMoveX(UIComponent):
         self.x_difference = self.findDifference()
         self.x_additive = 0
 
+        self.animation = UIAnimationType.MOVE_X
+
     def tick(self, dt, target_fps):
         if self.is_animation:
             if self.animation_frames > 0:
