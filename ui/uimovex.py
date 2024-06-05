@@ -34,8 +34,10 @@ class UIMoveX(UIComponent):
     def moveX(self, boolean):
         if boolean:
             self.uiobject.pos = self.pos
+            self.uiobject.updateSize()
         else:
             self.uiobject.pos = self.original_pos
+            self.uiobject.updateSize()
 
     def moveXTime(self, boolean):
         if boolean:
@@ -46,6 +48,7 @@ class UIMoveX(UIComponent):
                 elif newX > self.pos[0] and self.x_additive < 0:
                     newX = self.pos[0]
                 self.uiobject.pos = (newX, self.uiobject.pos[1])
+                self.uiobject.updateSize()
         else:
             if abs(self.uiobject.pos[0] - self.original_pos[0]) >= 0:
                 newX = self.uiobject.pos[0] + self.x_additive
@@ -54,6 +57,7 @@ class UIMoveX(UIComponent):
                 elif newX < self.original_pos[0] and self.x_additive < 0:
                     newX = self.original_pos[0]
                 self.uiobject.pos = (newX, self.uiobject.pos[1])
+                self.uiobject.updateSize()
 
     def findDifference(self):
         return  self.uiobject.pos[0] - self.pos[0]

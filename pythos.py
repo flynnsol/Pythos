@@ -48,6 +48,9 @@ class Pythos:
         self.clock = pygame.time.Clock()
         self.running = True
 
+    def changeFontSize(self, size):
+        self.font.size = size
+
     def addMenu(self, menu):
         self.menus.append(menu)
 

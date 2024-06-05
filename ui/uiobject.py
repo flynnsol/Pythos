@@ -15,6 +15,7 @@ class UIObject:
         self.width = text_rect[2]
         self.height = text_rect[3]
         self.size = (self.width, self.height)
+        self.rect = (self.pos[0], self.pos[1], self.size[0], self.size[1])
 
         self.main_color = Colors.WHITE()
         self.secondary_color = None
@@ -35,6 +36,8 @@ class UIObject:
         self.components.remove(component)
 
     def render(self, surf, offset=(0, 0)):
+        if self.secondary_color:
+            surf.fill(self.secondary_color, self.rect)
         if not self.string == '':
             # TODO: Render Characters Individually to Add More Color/Animation Options
             self.font.render_to(surf, ((self.pos[0] - offset[0]), self.pos[1] - offset[0]), self.string, self.main_color, self.secondary_color)
@@ -73,6 +76,13 @@ class UIObject:
                 return True
             return False
         return False
+
+    def updateSize(self):
+        self.size = (self.width, self.height)
+        self.updateRect()
+
+    def updateRect(self):
+        self.rect = (self.pos[0], self.pos[1], self.size[0], self.size[1])
 
 
 class UIType(Enum):
