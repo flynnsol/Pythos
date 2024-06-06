@@ -60,7 +60,6 @@ class UIColorChange(UIComponent):
         if not self.is_animation:
             if boolean:
                 self.uiobject.main_color = self.color
-                self.pythos.changeFontSize(28)
             else:
                 self.uiobject.main_color = self.original_main_color
         else:
